@@ -2,10 +2,10 @@ import io from '../src/servidor.js'
 
 
 io.on("connection", (socket) => {
-    console.log("Um cliente se conectou! ID:", socket.id);
+  console.log("Um cliente se conectou! ID:", socket.id);
 
-    socket.on("texto_editor", (texto)=>{
-      console.log(texto)
-    })
-  });
+  socket.on("texto_editor", (texto) => {
+    socket.broadcast.emit("texto_editor_clientes", texto)
+  })
+});
 
